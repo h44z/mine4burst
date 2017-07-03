@@ -1,4 +1,5 @@
 #include "plot.h"
+#include "helper.h"
 
 #ifdef __linux__
 
@@ -51,8 +52,8 @@ PlotFile **get_plotfiles_in_directory(char *directory) {
                 continue; // Skip base dir
 
             printf("File: %s\n", fd_file.cFileName);
-            PlotFile p = _parse_filename(fd_file.cFileName);
-            printf("%llu, %llu\n", p.address, p.start_nonce);
+            PlotFile p = _parse_filename(directory, fd_file.cFileName);
+            printf("%llu, %llu, %lli, %s\n", p.address, p.start_nonce, p.size, p.path);
         }
     } else {
         printf("Plot directory not found!\n");
@@ -67,7 +68,7 @@ PlotFile **get_plotfiles_in_directory(char *directory) {
 #endif
 
 
-PlotFile _parse_filename(char *file_name) {
+PlotFile _parse_filename(char *path, char *file_name) {
     char *name = strdup(file_name);
     char *token = name, *end = name;
     PlotFile plot;
@@ -96,6 +97,12 @@ PlotFile _parse_filename(char *file_name) {
     }
 
     free(name);
+
+    char plot_path[4069];
+    snprintf(plot_path, sizeof(plot_path), "%s\\%s", path, file_name);
+
+    plot.path = strdup(plot_path);
+    plot.size = get_file_size(plot_path);
 
     return plot;
 }

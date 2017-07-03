@@ -14,15 +14,15 @@
 
 typedef struct PlotFile {
     char *path;
-    unsigned long int size;
-    unsigned long long int address;
-    unsigned long long int start_nonce;
-    unsigned long int nonces;
-    unsigned long int staggeramt;
+    long long size;
+    unsigned long long address;
+    unsigned long long start_nonce;
+    unsigned long nonces;
+    unsigned long staggeramt;
 } PlotFile;
 
 // private
-PlotFile _parse_filename(char *file_name);
+PlotFile _parse_filename(char *path, char *file_name);
 
 void _init_plotfile(PlotFile *file);
 
