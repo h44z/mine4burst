@@ -1,0 +1,11 @@
+{
+    "Server" : "burstpool.site",
+    "Port" : 8080,
+
+    "Paths":
+    [
+            "D:\\Burst\\plots","M:\\Burst\\plots","N:\\Burst\\plots","O:\\Burst\\plots","P:\\Burst\\plots","Q:\\Burst\\plots","S:\\Burst\\plots","T:\\Burst\\plots"
+    ],
+    
+    "TargetDeadline": 2592000
+}
