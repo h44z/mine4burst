@@ -2,6 +2,7 @@
 
 #include "config.h"
 #include "plot.h"
+#include "tinycthread.h"
 
 MinerConfig config;
 
@@ -24,5 +25,6 @@ int main(int argc, char **argv) {
     } else {
         printf("Invalid configuration loaded!\n");
     }
+
     return 0;
 }
